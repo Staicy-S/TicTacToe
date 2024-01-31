@@ -10,12 +10,16 @@ const dummyBoard = [
 ];
 
 function App() {
+  function handleNewGame() {
+    console.log("test");
+  }
+
   return (
     <>
       <h1>Tic Tac Toe 🙅‍♀️🙆‍♀️</h1>
       <PlayerField activePlayer={0} round={2} />
       <Board board={dummyBoard} />
-      <Winner winner={1} />
+      <Winner winner={1} onNewGame={handleNewGame} />
     </>
   );
 }
