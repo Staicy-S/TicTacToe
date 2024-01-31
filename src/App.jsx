@@ -50,7 +50,6 @@ function App() {
   }
 
   function calculateWinner() {
-    console.log("calculateWinner");
     // Check rows
     for (let i = 0; i < board.length; i++) {
       if (board[i][0] === board[i][1] && board[i][0] === board[i][2]) {
@@ -79,7 +78,6 @@ function App() {
 
   return (
     <>
-      <p>{JSON.stringify(board)}</p>
       <h1>Tic Tac Toe 🙅‍♀️🙆‍♀️</h1>
       <PlayerField activePlayer={activePlayer} round={currentRound} />
       <Board board={board} onSelectField={handleSelectField} />
