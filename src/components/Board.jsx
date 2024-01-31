@@ -6,15 +6,24 @@ import styles from "./Board.module.css";
 //   [1, -1, 0],
 // ];
 
-export function Board({ board }) {
+export function Board({ board, onSelectField }) {
   return (
     <div className={styles.board}>
-      {board.map((row, index) => {
+      {board.map((row, rowIndex) => {
         return (
-          <div key={index} className={styles.row}>
-            {row.map((field, index) => {
+          <div key={rowIndex} className={styles.row}>
+            {row.map((field, fieldIndex) => {
               return (
-                <div key={index} className={styles.field}>
+                <div
+                  onClick={() => {
+                    onSelectField({
+                      row: rowIndex,
+                      column: fieldIndex,
+                    });
+                  }}
+                  key={fieldIndex}
+                  className={styles.field}
+                >
                   {field === -1 ? "" : field === 0 ? "O" : "X"}
                 </div>
               );
