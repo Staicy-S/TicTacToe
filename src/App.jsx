@@ -18,6 +18,7 @@ function App() {
   function handleNewGame() {
     setActivePlayer(0);
     setBoard(initialBoard);
+    setCurrentRound(1);
   }
 
   function handleSelectField(fieldPosition) {
@@ -48,12 +49,41 @@ function App() {
     }
   }
 
+  function calculateWinner() {
+    console.log("calculateWinner");
+    // Check rows
+    for (let i = 0; i < board.length; i++) {
+      if (board[i][0] === board[i][1] && board[i][0] === board[i][2]) {
+        return board[i][0];
+      }
+    }
+
+    for (let i = 0; i < 3; i++) {
+      if (board[0][i] === board[1][i] && board[0][i] === board[2][i]) {
+        return board[0][i];
+      }
+    }
+
+    if (board[0][0] == board[1][1] && board[0][0] == board[2][2]) {
+      return board[0][0];
+    }
+
+    if (board[0][2] == board[1][1] && board[0][2] == board[2][0]) {
+      return board[0][2];
+    }
+
+    return -1;
+  }
+
+  const winner = calculateWinner();
+
   return (
     <>
+      <p>{JSON.stringify(board)}</p>
       <h1>Tic Tac Toe 🙅‍♀️🙆‍♀️</h1>
       <PlayerField activePlayer={activePlayer} round={currentRound} />
       <Board board={board} onSelectField={handleSelectField} />
-      <Winner winner={1} onNewGame={handleNewGame} />
+      <Winner winner={winner} onNewGame={handleNewGame} />
     </>
   );
 }
