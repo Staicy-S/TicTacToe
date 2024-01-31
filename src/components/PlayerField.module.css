@@ -1,0 +1,37 @@
+.💪 h2 {
+  text-transform: uppercase;
+}
+
+.💪 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.active-player {
+  color: rgb(255, 0, 195);
+}
+
+.round-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid yellow;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  font-weight: 800;
+  font-size: 1.7em;
+  color: yellow;
+}
+
+@media (max-width: 576px) {
+  .💪 {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .💪 h2 {
+    margin: 0;
+  }
+}
